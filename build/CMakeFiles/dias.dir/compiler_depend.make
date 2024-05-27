@@ -197,7 +197,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/mini_compiler/src/main.cpp 
   /usr/include/c++/12/bits/stl_uninitialized.h \
   /usr/include/c++/12/bits/stl_vector.h \
   /usr/include/c++/12/bits/stl_bvector.h \
-  /usr/include/c++/12/bits/vector.tcc
+  /usr/include/c++/12/bits/vector.tcc \
+  /home/dias/repos/mini_compiler/src/main.hpp
 
 
 /usr/include/c++/12/bits/stl_bvector.h:
@@ -445,6 +446,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/mini_compiler/src/main.cpp 
 /usr/include/stdlib.h:
 
 /usr/include/c++/12/bits/memoryfwd.h:
+
+/home/dias/repos/mini_compiler/src/main.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
