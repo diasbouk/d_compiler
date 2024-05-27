@@ -1,5 +1,0 @@
-out.asm
-.clang-format
-out.o
-ds
-**/build
