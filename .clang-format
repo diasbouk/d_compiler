@@ -1,0 +1,12 @@
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+
+# BreakBeforeBraces: Custom
+# BraceWrapping:
+#   AfterEnum: true
+#   AfterStruct: true
+#   SplitEmptyFunction: true
+#   AfterClass: true
+#   AfterFunction: true
+#   AfterControlStatement: Always
