@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <optional>
 #include <ostream>
@@ -20,12 +21,19 @@ struct Token {
   std::optional<std::string> value = {};
 };
 
+
+
+
+
 class Tokenizer {
+	/* Tokenizer class  */
 private:
-  const std::string m_src;
+  const std::string src_code;
+
+
 
 public:
-  inline Tokenizer(const std::string &src) : m_src(src) {}
+  inline Tokenizer(const std::string &src) : src_code(src) {}
 
   /* isnum - Checks if a string is a number
    * @:s String reference
@@ -39,13 +47,13 @@ public:
     return !s.empty() && it == s.end();
   }
 
-  /* Tokenizer function
+  /* Tokenize function
    * tokenizer - iterates through the content of source file
    * @content: content to handle
    * Return: ?
    */
 
-  inline std::vector<Token> tokenizer(const std::string &content) {
+  inline std::vector<Token> tokenize(const std::string &content) {
 
     /* Declaring some vars needed
      * tokens: List of tokens

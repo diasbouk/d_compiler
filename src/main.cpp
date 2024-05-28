@@ -8,8 +8,8 @@
 #include <sstream>
 #include <vector>
 
-#include "./main.hpp"
-
+#include "./tokenizer.hpp"
+#include "parser.hpp"
 
 /* string_to_asm - Converts string to assembly code
  * @tooken: Token struct that hold some code (line)
@@ -55,17 +55,21 @@ int main(int ac, char **av) {
 
   std::string content;
   std::stringstream buffer;
-  std::vector<Token> token;
+  std::vector<Token> tokens;
   std::fstream input(av[1], std::ios::in);
   buffer << input.rdbuf();
   content = buffer.str();
-	Tokenizer Tk(std::move(content));
 
   /* Tokenizing the content of src file */
-  token = Tk.tokenizer(content);
+  Tokenizer tokenizer(std::move(content));
+  tokens = tokenizer.tokenize(content);
+	/* Parser to pares the tokens */
 
-  /* Converting token to assembly code */
-  std::stringstream asmCode = tokens_to_asm(token);
+  Parser parser(std::move(tokens));
+	/* std::optional<NodeExit> tree = parser.parse(); */
+
+      /* Converting token to assembly code */
+      std::stringstream asmCode = tokens_to_asm(tokens);
 
   /* Moving asm code to file (Hardcoded but we'll fix it later) */
   std::fstream asmFile("./out.asm", std::ios::out);
