@@ -73,20 +73,20 @@ public:
     }
 
     /* if buffer items aren't enough just quit */
-    if (buffer.size() != 4) {
+    if (buffer.size() != 3) {
       std::cout << "Dumped" << std::endl;
       exit(EXIT_FAILURE);
     } else {
-      for (int i = 0; i < buffer.size() - 1; i++) {
+      for (int i = 0; i < buffer.size(); i++) {
         if (buffer.at(i) == "exit")
           tokens.push_back({.type = TokenType::_exit});
         else if (isnum(buffer.at(i)))
           tokens.push_back({.type = TokenType::int_lat, .value = buffer.at(i)});
-        else if (buffer.at(i) == ";")
+        else if (buffer.at(i)[0] == ';')
           tokens.push_back({.type = TokenType::semicol});
         /* In case of any syntax issues */
         else {
-          std::cout << "Wrong token passed" << std::endl;
+          std::cout << "Wrong token passed ==> " << buffer.at(i) << std::endl;
         }
       }
     }

@@ -8,29 +8,10 @@
 #include <sstream>
 #include <vector>
 
+#include "./generation.hpp"
 #include "./tokenizer.hpp"
 #include "parser.hpp"
 
-/* string_to_asm - Converts string to assembly code
- * @tooken: Token struct that hold some code (line)
- * Return: A strin (ouput) holding the asm code
- */
-
-std::stringstream tokens_to_asm(std::vector<Token> token) {
-  std::stringstream output;
-
-  output << "global _start\n_start:\n";
-
-  if (token.size() == 3) {
-    if (token.at(0).type == TokenType::_exit)
-      output << "    mov rax, 60\n";
-    if (token.at(1).type == TokenType::int_lat)
-      output << "    mov rdi, " << token.at(1).value.value() << "\n";
-    if (token.at(2).type == TokenType::semicol)
-      output << "    syscall";
-  }
-  return output;
-}
 /* main - Entry point of the programm
  * @ac: Number of positional passed argumenst
  * @av: Array of strings containing arguments
@@ -63,17 +44,22 @@ int main(int ac, char **av) {
   /* Tokenizing the content of src file */
   Tokenizer tokenizer(std::move(content));
   tokens = tokenizer.tokenize(content);
-	/* Parser to pares the tokens */
+  /* Parser to pares the tokens */
 
   Parser parser(std::move(tokens));
-	/* std::optional<NodeExit> tree = parser.parse(); */
+  std::optional<NodeExit> tree = parser.parse();
+  if (!tree.has_value()) {
+    std::cout << "Parsing failed" << std::endl;
+    exit(EXIT_FAILURE);
+  }
 
-      /* Converting token to assembly code */
-      std::stringstream asmCode = tokens_to_asm(tokens);
+  Generator generator(tree.value());
+
+  /* Converting token to assembly code */
 
   /* Moving asm code to file (Hardcoded but we'll fix it later) */
   std::fstream asmFile("./out.asm", std::ios::out);
-  asmFile << asmCode.str();
+  asmFile << generator.tokens_to_asm();
 
   /* std::cout << asmCode.str() << std::endl; */
   /* Closing the source file after finishing

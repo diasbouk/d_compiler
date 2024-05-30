@@ -198,8 +198,14 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/mini_compiler/src/main.cpp 
   /usr/include/c++/12/bits/stl_vector.h \
   /usr/include/c++/12/bits/stl_bvector.h \
   /usr/include/c++/12/bits/vector.tcc \
-  /home/dias/repos/mini_compiler/src/main.hpp
+  /home/dias/repos/mini_compiler/src/generation.hpp \
+  /home/dias/repos/mini_compiler/src/parser.hpp \
+  /home/dias/repos/mini_compiler/src/tokenizer.hpp
 
+
+/home/dias/repos/mini_compiler/src/tokenizer.hpp:
+
+/home/dias/repos/mini_compiler/src/parser.hpp:
 
 /usr/include/c++/12/bits/stl_bvector.h:
 
@@ -447,8 +453,6 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/mini_compiler/src/main.cpp 
 
 /usr/include/c++/12/bits/memoryfwd.h:
 
-/home/dias/repos/mini_compiler/src/main.hpp:
-
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/atomic_word.h:
@@ -538,6 +542,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/mini_compiler/src/main.cpp 
 /usr/include/locale.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/gthr-default.h:
+
+/home/dias/repos/mini_compiler/src/generation.hpp:
 
 /usr/include/c++/12/iostream:
 
