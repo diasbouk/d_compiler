@@ -46,8 +46,9 @@ int main(int ac, char **av) {
   tokens = tokenizer.tokenize(content);
   /* Parser to pares the tokens */
 
-  Parser parser(std::move(tokens));
+  Parser parser(tokens);
   std::optional<NodeExit> tree = parser.parse();
+	std:: cout << "** " << tree->expr.int_lat.value.value() << " **";
   if (!tree.has_value()) {
     std::cout << "Parsing failed" << std::endl;
     exit(EXIT_FAILURE);

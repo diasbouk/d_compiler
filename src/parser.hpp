@@ -25,17 +25,17 @@ public:
 
   std::optional<NodeExit> parse() {
     NodeExit exit_tree;
-    for (int i = 0; i <= m_tokens.size() - 1; i++) {
+    for (int i = 0; i < m_tokens.size(); i++) {
       if (m_tokens.at(i).type == TokenType::_exit) {
-        if (m_tokens.at(++i).type == TokenType::int_lat) {
+        if (m_tokens.at(i + 2).type == TokenType::int_lat) {
           exit_tree = {
-              .expr = {.int_lat = {.value = m_tokens.at(i).value.value()}}};
+              .expr = {.int_lat = {.value = m_tokens.at(i + 2).value.value()}}};
         } else {
           std::cout << "Invalid expression" << std::endl;
           exit(EXIT_FAILURE);
         }
-        if (m_tokens.at(++i).type == TokenType::semicol) {
-          continue;
+        if (m_tokens.at(i + 4).type == TokenType::semicol) {
+          break;
         } else {
           std::cout << "Invalid Syntax : ';' expected" << std::endl;
           exit(EXIT_FAILURE);
