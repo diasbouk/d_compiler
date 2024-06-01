@@ -14,6 +14,9 @@ enum class TokenType {
     semicol,
     open_par,
     close_par,
+    let,
+    ident,
+    eq,
 };
 
 /* Struct of token */
@@ -108,11 +111,22 @@ class Tokenizer {
                 tokens.push_back(
                     {.type = TokenType::int_lat, .value = buffer.at(i)});
             } else if (buffer.at(i)[0] == ';')
-                tokens.push_back({.type = TokenType::semicol});
+                tokens.push_back(
+                    {.type = TokenType::semicol, .value = buffer.at(i)});
             else if (buffer.at(i)[0] == '(')
-                tokens.push_back({.type = TokenType::open_par});
+                tokens.push_back(
+                    {.type = TokenType::open_par, .value = buffer.at(i)});
             else if (buffer.at(i)[0] == ')')
-                tokens.push_back({.type = TokenType::close_par});
+                tokens.push_back(
+                    {.type = TokenType::close_par, .value = buffer.at(i)});
+            else if (buffer.at(i) == "let") {
+                tokens.push_back(
+                    {.type = TokenType::ident, .value = buffer.at(i)});
+                tokens.push_back(
+                    {.type = TokenType::let, .value = buffer.at(i + 1)});
+            } else if (buffer.at(i)[0] == '=') {
+                tokens.push_back({.type = TokenType::eq});
+            }
             /* In case of any syntax issues */
             else {
                 std::cout << "Wrong token passed ==> " << buffer.at(i)

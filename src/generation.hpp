@@ -7,7 +7,7 @@ class Generator {
     /* Public stuff , funcs and attributes */
 
     /* Class constructor */
-    inline Generator(NodeExit node) : m_node(node) {}
+    inline Generator(NodeStmtExit node) : m_node(node) {}
 
     /* string_to_asm - Converts string to assembly code
      * @tooken: Token struct that hold some code (line)
@@ -19,7 +19,7 @@ class Generator {
 
         output << "global _start\n_start:\n";
         output << "    mov rax, 60\n";
-        std::cout << "--" << m_node.expr.int_lat.value.value() << "--";
+        std::cout << "--" << m_node.expr.NodeExprInt.value.value() << "--";
         output << "    mov rdi, " << m_node.expr.int_lat.value.value() << "\n";
         output << "    syscall";
         return output.str();
@@ -27,5 +27,5 @@ class Generator {
 
   private:
     /* Private stuff here */
-    NodeExit m_node;
+    NodeStmtExit m_node;
 };

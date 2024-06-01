@@ -161,4 +161,6 @@ CMakeFiles/dias.dir/src/main.cpp.o: \
  /usr/include/c++/12/bits/vector.tcc \
  /home/dias/repos/mini_compiler/src/./generation.hpp \
  /home/dias/repos/mini_compiler/src/././parser.hpp \
- /home/dias/repos/mini_compiler/src/././tokenizer.hpp
+ /home/dias/repos/mini_compiler/src/././tokenizer.hpp \
+ /usr/include/c++/12/variant /usr/include/c++/12/bits/parse_numbers.h \
+ /usr/include/c++/12/ext/aligned_buffer.h
