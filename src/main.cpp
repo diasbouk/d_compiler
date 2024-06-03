@@ -47,8 +47,8 @@ int main(int ac, char **av) {
     /* Parser to pares the tokens */
 
     Parser parser(tokens);
-    std::optional<NodeExit> tree = parser.parse();
-    std::cout << "** " << tree->expr.int_lat.value.value() << " **";
+    std::optional<NodeProgr> tree = parser.parse();
+    /* std::cout << "** " << tree->stmts << " **"; */
     if (!tree.has_value()) {
         std::cout << "Parsing failed" << std::endl;
         exit(EXIT_FAILURE);
@@ -60,7 +60,7 @@ int main(int ac, char **av) {
 
     /* Moving asm code to file (Hardcoded but we'll fix it later) */
     std::fstream asmFile("./out.asm", std::ios::out);
-    asmFile << generator.tokens_to_asm();
+    asmFile << generator.generate_progr();
 
     /* std::cout << asmCode.str() << std::endl; */
     /* Closing the source file after finishing

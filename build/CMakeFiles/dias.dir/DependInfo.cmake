@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dias/repos/mini_compiler/src/main.cpp" "CMakeFiles/dias.dir/src/main.cpp.o" "gcc" "CMakeFiles/dias.dir/src/main.cpp.o.d"
+  "/home/dias/repos/d_compiler/src/main.cpp" "CMakeFiles/dias.dir/src/main.cpp.o" "gcc" "CMakeFiles/dias.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

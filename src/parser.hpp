@@ -22,7 +22,7 @@ struct NodeExpr {
 
 /* Statments nodes */
 struct NodeStmtExit {
-    NodeExpr expr;
+    NodeExpr expr = {.var = NodeExprInt {}};
 };
 
 struct NodeStmtLet {
@@ -50,8 +50,9 @@ class Parser {
      * Return: NodeExit tree
      */
 
-    std::optional<NodeStmtExit> parse() {
-        NodeStmtExit tree;
+    std::optional<NodeProgr> parse() {
+        NodeStmt tree;
+        NodeProgr progrm;
         for (int i = 0; i < m_tokens.size(); i++) {
             if (m_tokens.at(i).type == TokenType::_exit) {
                 if (!(m_tokens.at(i + 1).type == TokenType::open_par)) {
@@ -64,25 +65,12 @@ class Parser {
                         exit(EXIT_FAILURE);
                     }
                     tree = {
-                        .expr = {
-                            .var = NodeExprInt{
-                                .int_lat = {
-                                    .value =
-                                        m_tokens.at(i + 2).value.value()}}}};
-                } else if (m_tokens.at(i + 2).type == TokenType::ident) {
-
-                    if (!(m_tokens.at(i + 3).type == TokenType::eq)) {
-                        std::cout << "Expected `=`" << std::endl;
-                        exit(EXIT_FAILURE);
-                    }
-					tree = {
-						.expr = {
-							.var = NodeExprIdent {
-								.ident = {TokenType::ident}
-							}
-						}
-					};
-
+                        .var = NodeStmtExit{
+                            .expr = {.var = NodeExprInt{
+                                         .int_lat = {
+                                             .value = m_tokens.at(i + 2)
+                                                          .value.value()}}}}};
+                    progrm.stmts.push_back(tree);
                 } else {
                     std::cout << "Invalid expression" << std::endl;
                     exit(EXIT_FAILURE);
@@ -93,12 +81,31 @@ class Parser {
                     std::cout << "Invalid Syntax : ';' expected" << std::endl;
                     exit(EXIT_FAILURE);
                 }
+            } else if (m_tokens.at(i).type == TokenType::ident) {
+
+                if (!(m_tokens.at(i + 1).type == TokenType::eq)) {
+                    std::cout << "Expected `=`" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                tree = {
+                    .var = NodeStmtLet{
+                        .expr = {.var = NodeExprIdent{
+                                     .ident = {TokenType::ident,
+                                               .value = m_tokens.at(i + 2)
+                                                            .value.value()}}}}};
+                progrm.stmts.push_back(tree);
+                if (m_tokens.at(i + 3).type != TokenType::semicol) {
+                    std::cout << "Invalid syntax expr or ; expected"
+                              << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+
             } else {
                 std::cout << "Invalid syntax expr or ; expected" << std::endl;
                 exit(EXIT_FAILURE);
             }
         }
-        return tree;
+        return progrm;
     }
 
     /* Private properties stuff here */
