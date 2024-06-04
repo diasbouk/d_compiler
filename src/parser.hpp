@@ -22,7 +22,7 @@ struct NodeExpr {
 
 /* Statments nodes */
 struct NodeStmtExit {
-    NodeExpr expr = {.var = NodeExprInt {}};
+    NodeExpr expr = {.var = NodeExprInt{}};
 };
 
 struct NodeStmtLet {
@@ -71,9 +71,6 @@ class Parser {
                                              .value = m_tokens.at(i + 2)
                                                           .value.value()}}}}};
                     progrm.stmts.push_back(tree);
-                } else {
-                    std::cout << "Invalid expression" << std::endl;
-                    exit(EXIT_FAILURE);
                 }
                 if (m_tokens.at(i + 4).type == TokenType::semicol) {
                     break;
@@ -81,24 +78,34 @@ class Parser {
                     std::cout << "Invalid Syntax : ';' expected" << std::endl;
                     exit(EXIT_FAILURE);
                 }
-            } else if (m_tokens.at(i).type == TokenType::ident) {
+            } else if (m_tokens.at(i).type == TokenType::let) {
 
-                if (!(m_tokens.at(i + 1).type == TokenType::eq)) {
-                    std::cout << "Expected `=`" << std::endl;
+                if (!(m_tokens.at(i + 1).type == TokenType::ident)) {
+                    std::cout << "Identifier expected" << std::endl;
                     exit(EXIT_FAILURE);
                 }
+                if (m_tokens.at(i + 2).type != TokenType::eq) {
+                    std::cout << "Eq sign expected" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                if (m_tokens.at(i + 3).type != TokenType::int_lat &&
+                    m_tokens.at(i).type != TokenType::ident) {
+                    std::cout << "Expected value or identifier" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                if (m_tokens.at(i + 4).type != TokenType::semicol) {
+                    std::cout << "Expected `;` buddy" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+
                 tree = {
                     .var = NodeStmtLet{
                         .expr = {.var = NodeExprIdent{
-                                     .ident = {TokenType::ident,
-                                               .value = m_tokens.at(i + 2)
+                                     .ident = {TokenType::int_lat,
+                                               .value = m_tokens.at(i + 3)
                                                             .value.value()}}}}};
+                i += 4;
                 progrm.stmts.push_back(tree);
-                if (m_tokens.at(i + 3).type != TokenType::semicol) {
-                    std::cout << "Invalid syntax expr or ; expected"
-                              << std::endl;
-                    exit(EXIT_FAILURE);
-                }
 
             } else {
                 std::cout << "Invalid syntax expr or ; expected" << std::endl;

@@ -203,8 +203,47 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
   /home/dias/repos/d_compiler/src/tokenizer.hpp \
   /usr/include/c++/12/variant \
   /usr/include/c++/12/bits/parse_numbers.h \
-  /usr/include/c++/12/ext/aligned_buffer.h
+  /usr/include/c++/12/ext/aligned_buffer.h \
+  /usr/include/c++/12/algorithm \
+  /usr/include/c++/12/bits/stl_algo.h \
+  /usr/include/c++/12/bits/algorithmfwd.h \
+  /usr/include/c++/12/bits/stl_heap.h \
+  /usr/include/c++/12/bits/stl_tempbuf.h \
+  /usr/include/c++/12/bits/uniform_int_dist.h \
+  /usr/include/c++/12/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/12/pstl/execution_defs.h \
+  /usr/include/c++/12/cassert \
+  /usr/include/assert.h \
+  /usr/include/c++/12/cstddef \
+  /usr/include/c++/12/unordered_map \
+  /usr/include/c++/12/bits/hashtable.h \
+  /usr/include/c++/12/bits/hashtable_policy.h \
+  /usr/include/c++/12/tuple \
+  /usr/include/c++/12/bits/uses_allocator.h \
+  /usr/include/c++/12/bits/node_handle.h \
+  /usr/include/c++/12/bits/unordered_map.h \
+  /usr/include/c++/12/bits/erase_if.h \
+  /usr/include/c++/12/utility \
+  /usr/include/c++/12/bits/stl_relops.h
 
+
+/usr/include/c++/12/bits/unordered_map.h:
+
+/usr/include/c++/12/unordered_map:
+
+/usr/include/c++/12/bits/erase_if.h:
+
+/usr/include/assert.h:
+
+/usr/include/c++/12/pstl/glue_algorithm_defs.h:
+
+/usr/include/c++/12/bits/stl_tempbuf.h:
+
+/usr/include/c++/12/bits/stl_heap.h:
+
+/usr/include/c++/12/bits/algorithmfwd.h:
+
+/usr/include/c++/12/bits/stl_algo.h:
 
 /usr/include/c++/12/ext/aligned_buffer.h:
 
@@ -242,9 +281,13 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 
 /usr/include/c++/12/cwctype:
 
+/usr/include/c++/12/tuple:
+
 /usr/include/c++/12/bits/ostream.tcc:
 
 /usr/include/c++/12/bits/locale_facets.h:
+
+/usr/include/c++/12/pstl/execution_defs.h:
 
 /usr/include/c++/12/bits/basic_ios.h:
 
@@ -368,6 +411,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 
 /usr/include/c++/12/bits/hash_bytes.h:
 
+/usr/include/c++/12/bits/hashtable_policy.h:
+
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/c++/12/bits/sstream.tcc:
@@ -389,6 +434,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
 /usr/include/c++/12/bits/localefwd.h:
+
+/usr/include/c++/12/bits/hashtable.h:
 
 /usr/include/endian.h:
 
@@ -413,6 +460,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 /usr/include/x86_64-linux-gnu/c++/12/bits/os_defines.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
+
+/usr/include/c++/12/cstddef:
 
 /usr/include/c++/12/bits/new_allocator.h:
 
@@ -480,6 +529,10 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 
 /usr/include/wchar.h:
 
+/usr/include/c++/12/bits/stl_relops.h:
+
+/usr/include/c++/12/bits/node_handle.h:
+
 /usr/include/c++/12/cstdint:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
@@ -492,7 +545,11 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
+/usr/include/c++/12/algorithm:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
+
+/usr/include/c++/12/utility:
 
 /usr/include/stdc-predef.h:
 
@@ -509,6 +566,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/c++/12/exception:
+
+/usr/include/c++/12/bits/uniform_int_dist.h:
 
 /usr/include/c++/12/bits/std_abs.h:
 
@@ -572,6 +631,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 
 /usr/include/time.h:
 
+/usr/include/c++/12/cassert:
+
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
@@ -605,6 +666,8 @@ CMakeFiles/dias.dir/src/main.cpp.o: /home/dias/repos/d_compiler/src/main.cpp \
 /usr/include/x86_64-linux-gnu/c++/12/bits/ctype_base.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/12/bits/uses_allocator.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_funcs.h:
 

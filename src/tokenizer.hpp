@@ -93,6 +93,8 @@ class Tokenizer {
                 buffer.push_back(";");
             } else if (isspace(content.at(i))) {
                 continue;
+            } else if (content.at(i) == '=') {
+                buffer.push_back("=");
             } else {
                 std::cout << "Wrong token passed !" << std::endl;
                 exit(EXIT_FAILURE);
@@ -107,30 +109,24 @@ class Tokenizer {
         for (int i = 0; i < buffer.size(); i++) {
             if (buffer.at(i) == "exit")
                 tokens.push_back({.type = TokenType::_exit});
-            else if (isnum(buffer.at(i))) {
+            else if (buffer.at(i) == "let") {
+                tokens.push_back({.type = TokenType::let});
+            } else if (isnum(buffer.at(i))) {
                 tokens.push_back(
                     {.type = TokenType::int_lat, .value = buffer.at(i)});
             } else if (buffer.at(i)[0] == ';')
-                tokens.push_back(
-                    {.type = TokenType::semicol, .value = buffer.at(i)});
+                tokens.push_back({.type = TokenType::semicol});
             else if (buffer.at(i)[0] == '(')
-                tokens.push_back(
-                    {.type = TokenType::open_par, .value = buffer.at(i)});
+                tokens.push_back({.type = TokenType::open_par});
             else if (buffer.at(i)[0] == ')')
-                tokens.push_back(
-                    {.type = TokenType::close_par, .value = buffer.at(i)});
-            else if (buffer.at(i) == "let") {
-                tokens.push_back(
-                    {.type = TokenType::ident, .value = buffer.at(i)});
-                tokens.push_back(
-                    {.type = TokenType::let, .value = buffer.at(i + 1)});
-            } else if (buffer.at(i)[0] == '=') {
+                tokens.push_back({.type = TokenType::close_par});
+            else if (buffer.at(i) == "=") {
                 tokens.push_back({.type = TokenType::eq});
             }
             /* In case of any syntax issues */
             else {
-                std::cout << "Wrong token passed ==> " << buffer.at(i)
-                          << std::endl;
+                tokens.push_back(
+                    {.type = TokenType::ident, .value = buffer.at(i)});
             }
         }
         /* } */

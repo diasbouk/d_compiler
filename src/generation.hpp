@@ -1,8 +1,13 @@
 #include "./parser.hpp"
 #include "tokenizer.hpp"
+#include <algorithm>
+#include <cassert>
 #include <cstddef>
+#include <cstdlib>
+#include <iostream>
 #include <sstream>
 #include <unordered_map>
+#include <utility>
 #include <variant>
 
 class Generator {
@@ -25,7 +30,25 @@ class Generator {
                               << int_lit.int_lat.value.value() << "\n";
                 gen->push("rax");
             }
-            void operator()(const NodeExprIdent ident) {}
+            void operator()(const NodeExprIdent ident) {
+
+                const auto it =
+                    std::find_if(gen->m_vars.begin(), gen->m_vars.end(),
+                                 [&stoi(ident.ident.value.value()), ident](const Var &var) {
+                                     return (int)var.stack_loc ==
+                                            stoi(ident.ident.value.value());
+                                 });
+                if (it == gen->m_vars.cend()) {
+                    std::cerr << "Undeclared identifier: "
+                              << ident.ident.value.value() << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                const auto var = gen->m_vars.at(ident.ident.value.value());
+                std::stringstream offset;
+                offset << "[rsp + " << (gen->stack_count - var.stack_loc)
+                       << "]\n";
+                gen->push(offset.str());
+            }
         };
         exprVisitor visitor(this);
         std::visit(visitor, expr.var);
@@ -47,7 +70,19 @@ class Generator {
                 gen->pop("rdi");
                 gen->m_output << "    syscall\n";
             }
-            void operator()(const NodeStmtLet stmt_let) {}
+            void operator()(const NodeStmtLet stmt_let) {
+                if (gen->m_vars.find(stmt_let.ident.value.value()) ==
+                    gen->m_vars.end()) {
+                    std::cerr << "Identifier already exists "
+                              << stmt_let.ident.value.value() << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                gen->m_vars.insert(
+                    std::make_pair(stmt_let.ident.value.value(),
+                                   Var{.stack_loc = gen->stack_count}));
+                gen->gen_expr(stmt_let.expr);
+                gen->push("");
+            }
         };
         stmtVisitor visitor(this);
         std::visit(visitor, stmt.var);
@@ -67,8 +102,7 @@ class Generator {
         }
 
         m_output << "    mov rax, 60\n";
-        m_output << "    mov rdi, 0"
-                 << "\n";
+        m_output << "    mov rdi, 0" << "\n";
         m_output << "    syscall\n";
         return m_output.str();
     }
@@ -86,11 +120,11 @@ class Generator {
         stack_count -= 1;
     }
 
-    struct Var {
+    typedef struct Var {
         size_t stack_loc;
-    };
+    } Var;
     NodeProgr m_node;
     std::stringstream m_output;
-    size_t stack_count;
-    std::unordered_map<std::string, Var> m_vars {};
+    size_t stack_count = 0;
+    std::unordered_map<std::string, Var> m_vars{};
 };

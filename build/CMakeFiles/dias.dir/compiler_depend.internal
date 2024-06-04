@@ -205,4 +205,25 @@ CMakeFiles/dias.dir/src/main.cpp.o
  /usr/include/c++/12/variant
  /usr/include/c++/12/bits/parse_numbers.h
  /usr/include/c++/12/ext/aligned_buffer.h
+ /usr/include/c++/12/algorithm
+ /usr/include/c++/12/bits/stl_algo.h
+ /usr/include/c++/12/bits/algorithmfwd.h
+ /usr/include/c++/12/bits/stl_heap.h
+ /usr/include/c++/12/bits/stl_tempbuf.h
+ /usr/include/c++/12/bits/uniform_int_dist.h
+ /usr/include/c++/12/pstl/glue_algorithm_defs.h
+ /usr/include/c++/12/pstl/execution_defs.h
+ /usr/include/c++/12/cassert
+ /usr/include/assert.h
+ /usr/include/c++/12/cstddef
+ /usr/include/c++/12/unordered_map
+ /usr/include/c++/12/bits/hashtable.h
+ /usr/include/c++/12/bits/hashtable_policy.h
+ /usr/include/c++/12/tuple
+ /usr/include/c++/12/bits/uses_allocator.h
+ /usr/include/c++/12/bits/node_handle.h
+ /usr/include/c++/12/bits/unordered_map.h
+ /usr/include/c++/12/bits/erase_if.h
+ /usr/include/c++/12/utility
+ /usr/include/c++/12/bits/stl_relops.h
 
